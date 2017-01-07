@@ -1,0 +1,57 @@
+h1 {
+  color: #428631;
+}
+
+body {
+  background: #f6f6f6;
+}
+
+/*.main-container {
+  background-color: none;
+  margin: 15px 10px 15px 10px;
+}
+
+#innner {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#searchform {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#pagg {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+}*/
+
+img {
+  border-radius: 5px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  /*margin: 7px;*/
+}
+
+#detaildiv {
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.fb-comments {
+  padding: 5px;
+}
+
+/*.thumbnail {
+  margin: 0 auto;
+  display: block;
+}*/
+
+.wmd-panel{
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+
+}

@@ -1,27 +1,53 @@
-<html>
+{% extends "base.html" %}
+{% block content %}
 
-<head>
-    <title>Django Girls blog</title>
-</head>
 
-<body>
-    <div>
-        <h1><a href="">Django Girls Blog</a></h1>
+<div class='col-sm-6 col-sm-offset-3'>
+    <h1>{{ title }}</h1>
+
+<form method='GET' action='' class='row'>
+        <div class='col-sm-6'>
+            <div class='input-group'>
+                <input class="form-control" type="text" name="searchquery" placeholder="Search posts" value="{{ request.GET.searchquery }}">
+                <span class='input-group-btn'>
+                    <!-- <input class='btn btn-default' type='submit' value='Search' /> -->
+                    <input class="btn btn-default" type="submit" name="" value="Search">
+                </span>
+            </div>
+        </div>
+</form>
+
+{% for obj in object_list %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="thumbnail">
+        {% if obj.image %}
+         <img src='{{ obj.image.url }}' class='img-responsive' />
+        {% endif %}
+      <div class="caption postdetail_item">
+                <h3><a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a> <small>{{ obj.timestamp|timesince}}</small></h3>
+                {{ obj.get_markdown|truncatechars_html:120 }}<br/>
+                <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+        </div>
     </div>
+  </div>
+<hr/>
+</div>
+{% endfor %}
 
-    {% for post in posts %}
-      <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="#">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
-      </div>
-    {% endfor %}
 
-    <div>
-        <p>published: 14.06.2014, 12:14</p>
-        <h2><a href="">My second post</a></h2>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-    </div>
-</body>
+<div id="pagg">
+  <nav aria-label="...">
+      <ul class="pager" class="pagination">
+          {% if object_list.has_previous %}
+            <li><a href="?page={{ object_list.previous_page_number }}&searchquery={{ request.GET.searchquery }}">previous</a></li>
+          {% endif %}
 
-</html>
+          {% if object_list.has_next %}
+            <li><a href="?page={{ object_list.next_page_number }}&searchquery={{ request.GET.searchquery }}">next</a> {% endif %}</li>
+      </ul>
+  </nav>
+</div>
+</div>
+
+{% endblock content %}
