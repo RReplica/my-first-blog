@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'pagedown',
-    # 'crispy_forms',
-    # 'markdown_deux',
+    'pagedown',
+    'crispy_forms',
+    'markdown_deux',
     'posts',
 ]
 
